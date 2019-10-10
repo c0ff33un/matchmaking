@@ -1,4 +1,4 @@
-tauro-matchmaking-ms:
+taurus-matchmaking-ms:
   build: .
   ports:
    - "5000:5000"
@@ -7,8 +7,8 @@ tauro-matchmaking-ms:
   environment:
    REDIS_URL: tauro-matchmaking-db
   links:
-   - tauro-matchmaking-db
-tauro-matchmaking-db:
+   - taurus-matchmaking-db
+taurus-matchmaking-db:
   image: redis
   ports:
    - "6379:6379"
