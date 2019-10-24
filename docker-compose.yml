@@ -1,14 +1,25 @@
-taurus-matchmaking-ms:
-  build: .
-  ports:
-   - "5000:5000"
-  volumes:
-   - .:/code
-  environment:
-   REDIS_URL: tauro-matchmaking-db
-  links:
-   - taurus-matchmaking-db
-taurus-matchmaking-db:
-  image: redis
-  ports:
-   - "6379:6379"
+version: '3'
+services:
+  taurus-matchmaking-ms:
+    build: .
+    ports:
+      - "6000:6000"
+    volumes:
+      - .:/code
+    environment:
+      REDIS_URL: taurus-matchmaking-db
+    depends_on:
+      - taurus-matchmaking-db
+    networks:
+      - taurus-network
+
+  taurus-matchmaking-db:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - taurus-network
+
+networks:
+  taurus-network:
+    external: true

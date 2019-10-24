@@ -180,7 +180,7 @@ class create(Resource):
       return {"error": "userid not provided"}, 400 
     
     x = {
-      "id": 0,
+      "id": userid,
       "score": 100
     }
 
@@ -194,4 +194,4 @@ api.add_resource(queue, '/')
 api.add_resource(create, '/create')
 
 if __name__ == "__main__":
-    app.run(debug=True, host= '0.0.0.0')
+    app.run(debug=True, host= '0.0.0.0', port=6000)
